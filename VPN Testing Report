@@ -1,0 +1,63 @@
+📌 Overview
+
+This document provides a step-by-step record of testing the OpenVPN setup using Easy-RSA to generate secure certificates and establish a working VPN connection.
+
+✅ Test Environment
+
+Operating System: Kali Linux
+
+VPN Server: OpenVPN 2.6.12
+
+VPN Client: OpenVPN 2.6.12
+
+Certificate Management: Easy-RSA 3.2.2
+
+Step 1: Cloning the Repository
+
+Command Used:
+git clone https://github.com/al3ksmatee/VPN-Setup.git
+cd VPN-Setup
+
+Step 2: Verifying Folder Structure
+
+Command Used:
+ls -R
+
+Step 3: Running the Installation Script
+
+Command Used:
+chmod +x install.sh
+./install.sh
+
+Step 4: Verifying OpenVPN Installation
+
+Command Used:
+openvpn --version
+
+Step 5: Generating the Server Key & Certificate
+
+Command Used:
+cd ~/openvpn-ca
+./easyrsa gen-req server nopass
+
+Step 6: Signing the Server Certificate
+
+Command Used:
+./easyrsa sign-req server server
+
+Step 7: Generating Client Certificates
+
+Command Used:
+./easyrsa gen-req client1 nopass
+./easyrsa sign-req client client1
+
+Step 8: Generating Diffie-Hellman Parameters
+
+Command Used:
+./easyrsa gen-dh
+
+🎉 Final Conclusion
+
+✅ The OpenVPN server and client were successfully set up and tested.
+✅ All certificates were properly generated using Easy-RSA.
+✅ VPN connection was successfully established and verified.
